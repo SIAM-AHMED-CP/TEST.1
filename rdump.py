@@ -50,7 +50,7 @@ def inputs():
     
     
 
-def getname(s,uid):
+def getname(uid):
     global n,c
     ua=random.choice(uao)
     hd={'authority':'m.facebook.com',
@@ -62,7 +62,7 @@ def getname(s,uid):
             
             }
     url="https://m.facebook.com/profile.php?id="+uid
-    pi=s.get(url,headers=hd)
+    pi=r.get(url,headers=hd)
     bp=bs(pi.content,"html.parser")
     name=bp.find("title").text.split("|")[0].strip()
     if "Content not found" not in name and "Log in to Facebook" not in name:
@@ -73,14 +73,13 @@ def getname(s,uid):
         #print(f"\033[1;34m\{uid} {name}")
     
     c+=1
-    print(f'[CHECKED-%s]'%c,end="\r")
+    print(f'[CHECKED-%s | DUMPED-%s]'%(c,n),end="\r")
 
-s=r.Session()
 
 def run():
     with tdp(max_workers=30) as t:
         for uid in uids:
-            t.submit(getname,s,uid)
+            t.submit(getname,uid)
 
 
 while True:
