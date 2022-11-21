@@ -1,7 +1,11 @@
-import requests as r
-from bs4 import BeautifulSoup as bs
 import random,string,time,re,sys,os
 from concurrent.futures import ThreadPoolExecutor as tdp
+try:
+    import requests as r
+    from bs4 import BeautifulSoup as bs
+except:
+    os.system("pip install bs4 requests")
+    os.system("clear")
 
 #open source
 sa="""
