@@ -22,11 +22,20 @@ try:
     open(file,"r").read()
 except:
     file="/sdcard/RDUMP.txt"
-    
+
+def s(code):
+    ln=15-len(code)
+    lim=int("9"*(ln))+1
+    for i in range(lim):
+        uids.append(code+str(i).zfill(ln))
 
 def gen(code,tt):
-    for i in range(tt):
-        uids.append(code+''.join(random.choice(string.digits) for _ in range(
+    op=int(input("""1.Serial\n2.Random\nSELECT:"""))
+    if op==1:
+        s(code)
+    else:
+        for i in range(tt):
+            uids.append(code+''.join(random.choice(string.digits) for _ in range(
         15-len(code)
         )))
         
